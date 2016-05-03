@@ -1,0 +1,16 @@
+$('.home index').ready(function(){
+	//check current slide
+	var currentProjectNum = getCurrentSlide();
+	$('.info').hide();
+	$($('.info')[currentProjectNum]).show();
+	$('#myCarousel').on('slid.bs.carousel', function (e){
+		currentProjectNum = getCurrentSlide();
+		//hides elements, waits until all animations are done and then shows the current slides info
+		$('.info').hide().promise().done(function(){
+			$($('.info')[currentProjectNum]).fadeIn(300);
+		});
+	});
+});
+function getCurrentSlide() {
+	return parseInt($('.carousel-indicators > li.active').attr('data-slide-to'));
+}

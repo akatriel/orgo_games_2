@@ -1,0 +1,50 @@
+/* line 5, /Users/McGee/Documents/projects/orgo_games/app/assets/stylesheets/home.scss.erb */
+#myCarousel {
+  overflow: hidden;
+  width: 50vw;
+  float: left;
+}
+/* line 9, /Users/McGee/Documents/projects/orgo_games/app/assets/stylesheets/home.scss.erb */
+#myCarousel .game {
+  width: auto;
+  height: 50vw;
+  margin-left: auto;
+  margin-right: auto;
+}
+/* line 14, /Users/McGee/Documents/projects/orgo_games/app/assets/stylesheets/home.scss.erb */
+#myCarousel .game img {
+  width: 100%;
+  height: auto;
+  padding: 2%;
+}
+
+/* line 21, /Users/McGee/Documents/projects/orgo_games/app/assets/stylesheets/home.scss.erb */
+.info_section {
+  width: 50vw;
+  padding: 2%;
+  float: left;
+}
+/* line 25, /Users/McGee/Documents/projects/orgo_games/app/assets/stylesheets/home.scss.erb */
+.info_section ul {
+  list-style-image: url(/suburi/cylohexane.gif);
+}
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any styles
+ * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
+ * file per style scope.
+ *
+
+
+ */
+/* line 17, /Users/McGee/Documents/projects/orgo_games/app/assets/stylesheets/application.scss */
+body {
+  width: 100%;
+  text-align: center;
+}

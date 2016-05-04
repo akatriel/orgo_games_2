@@ -1,0 +1,52 @@
+$('.games alkanes').ready(function(){
+	$('#modal').modal('show');
+	var score = 0, timer = 0, strike = 0;
+
+	$('#start-button').on('click', function(){start()});
+
+	$(".fake-button").click(function(event){
+		event.preventDefault();
+		parseInput();
+	});
+
+	
+
+	if (strike === 3) {
+		gameOver();
+	}
+
+	function parseInput(){
+		var input = $('.chem-input').val().toLowerCase();
+		molecule = $('.img-thumbnail').attr('data');
+		if (input === molecule) {
+			score = timer;
+		} else {
+			strike ++;
+		}
+	}
+
+	function setTimer() {
+  		var progressbar = $( "#timer" ).progressbar({});
+  		setInterval(function(){
+  			if (timer < 25) {
+  				timer ++;
+  				var progress  = timer / 25 * 100; 
+  				progressbar.progressbar( "option", "value", progress);
+  			} else {
+  				timer = 0;
+  				strike ++;
+  			}
+  		}, 1000);
+	}
+
+	function start(){ 
+		$('#modal').modal('hide');
+		setTimer();
+	}
+
+	function gameOver() {
+		$('#modal').modal('show');
+		timer = 0;
+
+	}
+});

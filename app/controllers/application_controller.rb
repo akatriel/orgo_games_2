@@ -1,5 +1,9 @@
 class ApplicationController < ActionController::Base
-  # Prevent CSRF attacks by raising an exception.
-  # For APIs, you may want to use :null_session instead.
-  protect_from_forgery with: :exception
+ 	protect_from_forgery with: :null_session
+  	def random_alkane
+		alkanes = ['methane', 'ethane', 'propane', 'butane', 'pentane', 'hexane', 'heptane', 'octane', 'nonane', 'decane']
+		@alkane = alkanes[rand(10)]
+		@alkane
+	end
+	helper_method :random_alkane
 end

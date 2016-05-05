@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   #   get 'products/:id' => 'catalog#view'
   root 'home#index'
   get 'alkanes' => 'games#alkanes'
+  post 'fetch_alkane' => 'games#fetch_alkane'
   get 'alkenes' => 'games#alkenes'
   get 'chairs' => 'games#chairs'
   get 'newmans' => 'games#newmans'

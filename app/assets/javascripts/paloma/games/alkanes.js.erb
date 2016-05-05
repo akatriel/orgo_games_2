@@ -5,11 +5,8 @@ $('.games alkanes').ready(function(){
 	$('#start-button').on('click', function(){start()});
 
 	$(".fake-button").click(function(event){
-		event.preventDefault();
 		parseInput();
 	});
-
-	
 
 	if (strike === 3) {
 		gameOver();

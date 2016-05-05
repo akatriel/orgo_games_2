@@ -1,12 +1,12 @@
 class GamesController < ApplicationController
 	def alkanes
-		alkanes = ['methane', 'ethane', 'propane', 'butane', 'pentane', 'hexane', 'heptane', 'octane', 'nonane', 'decane']
-		@alkane = alkanes[rand(10)]
-		@alkane unless nil
+		@alkane = random_alkane
+	end	
+	def fetch_alkane
+		@alkane = random_alkane
 		respond_to do |format|
-			format.html
 			format.js
-		end
+		end	
 	end
 	def alkenes
 	end

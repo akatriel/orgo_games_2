@@ -23,15 +23,15 @@
 <div class="container">
 	<div id="timer"></div>
 	<div class="molecule">
-		<%= image_tag "alkanes/" + @alkane + ".png", data: @alkane, class: 'img-thumbnail' %>
+		<%= render partial: 'alkanes' %>
 	</div>
 
-	<form>
+	<%= form_tag '/fetch_alkane', remote:true do %>
 		<div class="form-group">
-			<input class="chem-input form-control" placeholder="Molecule Name"></input>
-			<%= button_to 'Submit', '', remote: true, class:'btn btn-primary btn-lg btn-block fake-button' %>
+			<%= text_field_tag 'chem-input', '', class:'chem-input form-control', placeholder: 'Molecule Name' %>
+			<%= button_tag 'Submit', class:'btn btn-primary btn-lg btn-block fake-button' %>
 		</div>
-	</form>
+	<% end %>
 	<div class="gameOver">
 		<h1 class"text-danger"> Game Over </h1>
 	</div>

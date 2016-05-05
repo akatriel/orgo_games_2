@@ -6,13 +6,14 @@
 			</div>
 			<div class="modal-body">
 				<ul>
-					<li>Name the unbranched alkane according to the IUPAC system.</li>
+					<li>Name the unbranched alkane according to the IUPAC system. ex: 'hexane'</li>
 					<li>You have 25 seconds.</li>
 					<li>You have three strikes before the game ends.</li>
 					<li>A strike is assigned if an incorrect answer is given, or the timer hits 0.</li>
 					<li>The 'Enter' key can be pressed to submit an answer.</li>
 				</ul>
 			</div>
+			<div class="modal-score"></div>
 			<div class="modal-footer">
 				<button type="button" id="start-button" class="btn btn-success btn-lg btn-block">Start</button>
 			</div>
@@ -22,13 +23,14 @@
 
 <div class="container">
 	<div id="timer"></div>
+	<div class='strikebox'></div>
 	<div class="molecule">
 		<%= render partial: 'alkanes' %>
 	</div>
 
 	<%= form_tag '/fetch_alkane', remote:true do %>
 		<div class="form-group">
-			<%= text_field_tag 'chem-input', '', class:'chem-input form-control', placeholder: 'Molecule Name' %>
+			<%= text_field_tag 'chem-input', '', class:'chem-input form-control', placeholder: 'Molecule Name', autocomplete: 'off' %>
 			<%= button_tag 'Submit', class:'btn btn-primary btn-lg btn-block fake-button' %>
 		</div>
 	<% end %>

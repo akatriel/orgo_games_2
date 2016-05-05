@@ -3,12 +3,19 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 .container {
 	text-align: center;
+	max-height: 100vh;
 }
 
 .img-thumbnail {
-	width:40vw;
+	width:30vw;
 	height:auto;
 }
 .gameOver{
 	display: none;
+}
+.modal-body { 
+	text-align: left;
+}
+input{
+	text-align: center;
 }

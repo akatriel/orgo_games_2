@@ -1,4 +1,5 @@
 $('.games alkanes').ready(function(){
+	console.log('loaded games alkanes')
 	$('#modal').modal('show');
 	var score = 0, timer = 0, strike = 0;
 
@@ -15,35 +16,60 @@ $('.games alkanes').ready(function(){
 	function parseInput(){
 		var input = $('.chem-input').val().toLowerCase();
 		molecule = $('.img-thumbnail').attr('data');
+
 		if (input === molecule) {
-			score = timer;
+			score += 25 - timer;
+			$('.chem-input').val('');
+			clearInterval(interval);
+			setTimer();
+			console.log('success')
 		} else {
-			strike ++;
+			console.log('failed attempt')
+			console.log('input: ' + input + ' molecule: ' + molecule )
+			
+			$('.chem-input').val('');
+			clearInterval(interval);
+			setTimer();
+			addStrike();
 		}
 	}
 
 	function setTimer() {
+		timer = 0;
   		var progressbar = $( "#timer" ).progressbar({});
-  		setInterval(function(){
+  		interval = setInterval(function(){
   			if (timer < 25) {
   				timer ++;
   				var progress  = timer / 25 * 100; 
   				progressbar.progressbar( "option", "value", progress);
   			} else {
-  				timer = 0;
-  				strike ++;
+  				clearInterval(interval);
+  				setTimer();
+  				addStrike();
   			}
   		}, 1000);
 	}
 
+	function addStrike() {
+		strike < 2 ? strike++ : gameOver();
+		$('.strikebox').append("<span class='glyphicon glyphicon-remove'></span>");
+	}
+
 	function start(){ 
-		$('#modal').modal('hide');
+		$('.strikebox').html('');
+		$('#modal').modal('toggle');
+		score = 0;
 		setTimer();
 	}
 
 	function gameOver() {
-		$('#modal').modal('show');
+		console.log('gameOver')
+		strike = 0;
 		timer = 0;
-
+		clearInterval(interval);
+		$('.chem-input').val('');
+		$('.modal-score').text('Your score was: ' + score);
+		$('#start-button').text('Play Again?');
+		$('#modal').modal('toggle');
 	}
 });

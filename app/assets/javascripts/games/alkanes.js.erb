@@ -1,6 +1,9 @@
-$('.games alkanes').ready(function(){
-	console.log('loaded games alkanes')
+$('.games.alkanes').ready(function(){ 
+
+  	console.log('loaded games alkanes')
+
 	$('#modal').modal('show');
+
 	var score = 0, timer = 0, strike = 0;
 
 	$('#start-button').on('click', function(){start()});
@@ -8,10 +11,6 @@ $('.games alkanes').ready(function(){
 	$(".fake-button").click(function(event){
 		parseInput();
 	});
-
-	if (strike === 3) {
-		gameOver();
-	}
 
 	function parseInput(){
 		var input = $('.chem-input').val().toLowerCase();
@@ -72,4 +71,5 @@ $('.games alkanes').ready(function(){
 		$('#start-button').text('Play Again?');
 		$('#modal').modal('toggle');
 	}
+
 });

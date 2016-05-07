@@ -6,4 +6,8 @@ class ApplicationController < ActionController::Base
 		@alkane
 	end
 	helper_method :random_alkane
+
+	def random_alkene
+	end
+	helper_method :random_alkene
 end

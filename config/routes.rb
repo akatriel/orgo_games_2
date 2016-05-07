@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   get 'alkanes' => 'games#alkanes'
   post 'fetch_alkane' => 'games#fetch_alkane'
   get 'alkenes' => 'games#alkenes'
+  post 'fetch_alkene' => 'games#fetch_alkene'
   get 'chairs' => 'games#chairs'
   get 'newmans' => 'games#newmans'
   # Example of named route that can be invoked with purchase_url(id: product.id)

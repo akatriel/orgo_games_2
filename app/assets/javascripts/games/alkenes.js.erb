@@ -1,6 +1,6 @@
-$('.games.alkanes').ready(function(){ 
+$('.games.alkenes').ready(function(){ 
 
-  	console.log('loaded games alkanes')
+  	console.log('loaded games alkenes')
 
 	$('#modal').modal('show');
 
@@ -35,12 +35,12 @@ $('.games.alkanes').ready(function(){
 
 	function setTimer() {
 		timer = 0;
-  		var progressbar = $( ".progress-bar" );
+  		var progressbar = $( "#timer" ).progressbar({});
   		interval = setInterval(function(){
   			if (timer < 25) {
   				timer ++;
   				var progress  = timer / 25 * 100; 
-  				progressbar.css('width', progress + '%');
+  				progressbar.progressbar( "option", "value", progress);
   			} else {
   				clearInterval(interval);
   				setTimer();

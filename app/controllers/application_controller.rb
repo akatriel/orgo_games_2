@@ -8,6 +8,36 @@ class ApplicationController < ActionController::Base
 	helper_method :random_alkane
 
 	def random_alkene
+		#A hash contains keys of filenames, the values contain arrays of acceptable names.
+		alkenes = {ethene: ['ethene', 'ethylene'], 
+			propene: ['propene', 'prop-1-ene'],
+			but1ene: ['but-1-ene'],
+			ebut2ene: ['e-but-2-ene'],
+			zbut2ene: ['z-but-2-ene'],
+			pent1ene: ['pent-1-ene'],
+			epent2ene: ['e-pent-2-ene'],
+			zpent2ene: ['z-pent-2-ene'],
+			hex1ene: ['hex-1-ene'],
+			ehex2ene: ['e-hex-2-ene'],
+			zhex2ene: ['z-hex-2-ene'],
+			ehex3ene: ['e-hex-3-ene'],
+			zhex3ene: ['z-hex-3-ene'],
+			hept1ene: ['hept-1-ene'],
+			ehept2ene: ['e-hept-2-ene'],
+			zhept2ene: ['z-hept-2-ene'],
+			ehept3ene: ['e-hept-3-ene'],
+			zhept3ene: ['z-hept-3-ene'],
+			oct1ene: ['oct-1-ene'],
+			eoct2ene: ['e-oct-2-ene'],
+			zoct2ene: ['z-oct-2-ene'],
+			zoct3ene: ['z-oct-3-ene'],
+			eoct3ene: ['e-oct-3-ene'],
+			zoct4ene: ['z-oct-4-ene'],
+			eoct4ene: ['e-oct-4-ene']}
+		keys = alkenes.keys
+		randKey = keys[rand(keys.length)]
+		@alkeneInfo = [randKey, alkenes[randKey]]
+		#need to return key to fetch image, but also value to be set as a data attribute and parse the input
 	end
 	helper_method :random_alkene
 end

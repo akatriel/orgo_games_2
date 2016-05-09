@@ -9,10 +9,25 @@ class GamesController < ApplicationController
 		end	
 	end
 	def alkenes
-		@alkene = random_alkene
+		alkeneInfo = random_alkene
+		@alkenePictureName = alkeneInfo[0]
+		alkeneMoleculeNames = alkeneInfo[1]
+		if alkeneMoleculeNames.length > 1  
+			@name1, @name2 = alkeneMoleculeNames[0].downcase, alkeneMoleculeNames[1].downcase
+		else
+			@name1 = alkeneMoleculeNames[0].downcase
+		end
 	end
 	def fetch_alkene
-		@alkene = random_alkene
+		alkeneInfo = random_alkene
+		@alkenePictureName = alkeneInfo[0]
+		alkeneMoleculeNames = alkeneInfo[1]
+		if alkeneMoleculeNames.length > 1  
+			@name1, @name2 = alkeneMoleculeNames[0].downcase, alkeneMoleculeNames[1].downcase
+		else
+			@name1 = alkeneMoleculeNames[0].downcase
+		end
+
 		respond_to do |format|
 			format.js
 		end	

@@ -1,1 +1,1 @@
-<%= image_tag "alkenes/" + @alkene + ".png", class: 'img-thumbnail', data: @alkene.downcase %>
+<%= image_tag "alkenes/" + @alkenePictureName.to_s + ".png", class: 'img-thumbnail', data: {name1: @name1, name2: @name2}%>

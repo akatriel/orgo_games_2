@@ -19,6 +19,7 @@ $('.games.alkanes').ready(function(){
 		if (input === molecule) {
 			score += 25 - timer;
 			$('.chem-input').val('');
+			progressbarSuccess();
 			clearInterval(interval);
 			setTimer();
 			console.log('success')
@@ -27,6 +28,7 @@ $('.games.alkanes').ready(function(){
 			console.log('input: ' + input + ' molecule: ' + molecule )
 			
 			$('.chem-input').val('');
+			progressbarFailure();
 			failed.push(molecule);
 			clearInterval(interval);
 			setTimer();
@@ -94,5 +96,16 @@ $('.games.alkanes').ready(function(){
 		if ($('.modal-fail-list').css('display') === 'none') {
 			$('.modal-fail-list').toggle();
 		}
+	}
+	function progressbarSuccess(){
+		var progressbar = $('.progress-bar');
+		progressbar.addClass('progress-bar-success').removeClass('progress-bar-warning');
+		setTimeout(function(){progressbar.removeClass('progress-bar-success').addClass('progress-bar-warning')}, 1000);
+	}
+	
+	function progressbarFailure(){
+		var progressbar = $('.progress-bar');
+		progressbar.addClass('progress-bar-danger').removeClass('progress-bar-warning');
+		setTimeout(function(){progressbar.removeClass('progress-bar-danger').addClass('progress-bar-warning')}, 1000);
 	}
 });

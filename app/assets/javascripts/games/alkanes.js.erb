@@ -4,7 +4,7 @@ $('.games.alkanes').ready(function(){
 
 	$('#modal').modal('show');
 
-	var score = 0, timer = 0, strike = 0;
+	var score = 0, timer = 0, strike = 0, failed=[];
 
 	$('#start-button').on('click', function(){start()});
 
@@ -27,6 +27,7 @@ $('.games.alkanes').ready(function(){
 			console.log('input: ' + input + ' molecule: ' + molecule )
 			
 			$('.chem-input').val('');
+			failed.push(molecule);
 			clearInterval(interval);
 			setTimer();
 			addStrike();
@@ -67,9 +68,20 @@ $('.games.alkanes').ready(function(){
 		timer = 0;
 		clearInterval(interval);
 		$('.chem-input').val('');
+		appendFailedList();
 		$('.modal-score').text('Your score was: ' + score);
 		$('#start-button').text('Play Again?');
 		$('#modal').modal('toggle');
 	}
 
+	function appendFailedList(){
+		if (failed.length > 0) { 
+			for (var i = 0; i < failed.length; i++) {
+				$('.modal-fail-list > ul').append("<li class='list-group-item'>" + failed[i] + "</li>");
+			}
+		}
+		if ($('.modal-fail-list').css('display') === 'none') {
+			$('.modal-fail-list').toggle();
+		}
+	}
 });

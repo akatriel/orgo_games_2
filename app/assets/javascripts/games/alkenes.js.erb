@@ -4,7 +4,7 @@ $('.games.alkenes').ready(function(){
 
 	$('#modal').modal('show');
 
-	var score = 0, timer = 0, strike = 0;
+	var score = 0, timer = 0, strike = 0, failed = [], failedList = [];
 
 	$('#start-button').on('click', function(){start()});
 
@@ -14,18 +14,19 @@ $('.games.alkenes').ready(function(){
 
 	function parseInput(){
 		var input = $('.chem-input').val().toLowerCase();
-		molecule = $('.img-thumbnail').attr('data');
+		//Different than alkanes because of multiple names allowed
+		moleculeNames = [$('.img-thumbnail').attr('data-name1'), $('.img-thumbnail').attr('data-name2')];
 
-		if (input === molecule) {
-			score += 25 - timer;
+		if (input === moleculeNames[0] || input === moleculeNames[1]) {
+			score += 30 - timer;
 			$('.chem-input').val('');
 			clearInterval(interval);
 			setTimer();
 			console.log('success')
 		} else {
 			console.log('failed attempt')
-			console.log('input: ' + input + ' molecule: ' + molecule )
-			
+			console.log('input: ' + input + ' molecule: ' + moleculeNames )
+			failed.push(moleculeNames[0]);
 			$('.chem-input').val('');
 			clearInterval(interval);
 			setTimer();
@@ -35,12 +36,12 @@ $('.games.alkenes').ready(function(){
 
 	function setTimer() {
 		timer = 0;
-  		var progressbar = $( "#timer" ).progressbar({});
+  		var progressbar = $( ".progress-bar" );
   		interval = setInterval(function(){
-  			if (timer < 25) {
+  			if (timer < 30) {
   				timer ++;
-  				var progress  = timer / 25 * 100; 
-  				progressbar.progressbar( "option", "value", progress);
+  				var progress  = timer / 30 * 100; 
+  				progressbar.css('width', progress + '%');
   			} else {
   				clearInterval(interval);
   				setTimer();
@@ -58,6 +59,7 @@ $('.games.alkenes').ready(function(){
 		$('.strikebox').html('');
 		$('#modal').modal('toggle');
 		score = 0;
+		failed = [];
 		setTimer();
 	}
 
@@ -67,9 +69,19 @@ $('.games.alkenes').ready(function(){
 		timer = 0;
 		clearInterval(interval);
 		$('.chem-input').val('');
+		appendFailedList();
 		$('.modal-score').text('Your score was: ' + score);
 		$('#start-button').text('Play Again?');
 		$('#modal').modal('toggle');
 	}
-
+	function appendFailedList(){
+		if (failed.length > 0) { 
+			for (var i = 0; i < failed.length; i++) {
+				$('.modal-fail-list > ul').append("<li class='list-group-item'>" + failed[i] + "</li>");
+			}
+		}
+		if ($('.modal-fail-list').css('display') === 'none') {
+			$('.modal-fail-list').toggle();
+		}
+	}
 });

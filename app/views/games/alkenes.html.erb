@@ -2,7 +2,7 @@
 	<div class="modal-dialog">
 		<div class="modal-content">
 			<div class="modal-header">
-				<h4 class="modal-title">Name That Alkane</h4>
+				<h4 class="modal-title">Name That Alkene</h4>
 			</div>
 			<div class="modal-body">
 				<ul>
@@ -15,7 +15,12 @@
 					<li>Don't forget dashes!</li>
 				</ul>
 			</div>
-			<div class="modal-score"></div>
+			<div class="modal-score text-success"></div>
+			<div class="modal-fail-list">
+				<hr>
+				<p class="message">You should consider reviewing:</p>
+				<ul class="list-group text-info"></ul>
+			</div>
 			<div class="modal-footer">
 				<button type="button" id="start-button" class="btn btn-success btn-lg btn-block">Start</button>
 			</div>
@@ -24,7 +29,10 @@
 </div><!-- /.modal -->
 
 <div class="container">
-	<div id="timer"></div>
+	<div class="progress">
+  		<div class="progress-bar progress-bar-warning" role="progressbar" style="width: 50%">
+  		</div>
+	</div>
 	<div class='strikebox'></div>
 	<div class="molecule">
 		<%= render partial: 'alkenes' %>

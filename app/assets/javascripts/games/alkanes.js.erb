@@ -77,7 +77,17 @@ $('.games.alkanes').ready(function(){
 	function appendFailedList(){
 		if (failed.length > 0) { 
 			for (var i = 0; i < failed.length; i++) {
-				$('.modal-fail-list > ul').append("<li class='list-group-item'>" + failed[i] + "</li>");
+				var failedName = failed[i];
+				console.log('failedName: ' + failedName)
+				if ($('.' + failedName).length > 0) {
+					var badge = $('.' + failedName + ' > span');
+					console.log(badge)
+					var badgeNumber = parseInt(badge.text()) + 1;
+					badge.text(badgeNumber);
+				}
+				else{
+					$('.modal-fail-list > ul').append("<li class='list-group-item " + failedName +"'>" + failedName + "<span class='badge'>1</span></li>");
+				}
 			}
 		}
 		if ($('.modal-fail-list').css('display') === 'none') {

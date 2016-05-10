@@ -69,6 +69,7 @@ $('.games.alkanes').ready(function(){
 		clearInterval(interval);
 		$('.chem-input').val('');
 		appendFailedList();
+		failed = [];
 		$('.modal-score').text('Your score was: ' + score);
 		$('#start-button').text('Play Again?');
 		$('#modal').modal('toggle');

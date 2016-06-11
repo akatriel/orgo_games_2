@@ -40,4 +40,11 @@ class ApplicationController < ActionController::Base
 		#need to return key to fetch image, but also value to be set as a data attribute and parse the input
 	end
 	helper_method :random_alkene
+
+	def fetch_random_newman 
+		projections = [['1_back', '1_front', 300, '6.10'], ['2_back', '2_front', 300, '6.11'], ['3_back', '3_front', 180, '6.12'], ['4_back', '4_front', 180, '6.13'], ['5_back', '5_front', 180, '6.14']];
+		@newmanInfo = projections[rand(projections.length)]
+		#returns newman projection back, front, expected angle, skeleton formula
+	end
+	helper_method :fetch_random_newman
 end

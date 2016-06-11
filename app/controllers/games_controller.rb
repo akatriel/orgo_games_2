@@ -35,5 +35,13 @@ class GamesController < ApplicationController
 	def chairs
 	end
 	def newmans
+		@newmanInfo = fetch_random_newman
+	end
+	def fetch_newman
+		@newmanInfo = fetch_random_newman
+
+		respond_to do |format|
+			format.js
+		end
 	end
 end

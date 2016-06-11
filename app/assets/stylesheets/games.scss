@@ -1,3 +1,4 @@
+
 // Place all the styles related to the games controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
@@ -35,4 +36,41 @@ input{
 	.message {
 		font-size: larger;
 	}
+}
+
+
+//newman projections
+.projections {
+	height:50vh;
+	width:50vh;
+	margin-left: auto;
+	margin-right: auto;
+	position: relative;
+	top: 10%;
+	#front, #back {
+		height: 50vh;
+		width: auto;
+		margin: 0 auto;
+		position:absolute;
+		left: 0;
+		top: 0;
+	}
+	#front {
+	}
+	#back{
+		z-index: 5;
+	}
+}
+.newman-well {
+	height:90vh;
+}
+#canvas {
+	position: absolute;
+	bottom: 0;
+	top: 0;
+	left: 0;
+	right: 0;
+}
+#stable, #reload {
+	display: none;
 }

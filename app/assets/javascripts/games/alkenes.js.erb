@@ -20,6 +20,7 @@ $('.games.alkenes').ready(function(){
 		if (input === moleculeNames[0] || input === moleculeNames[1]) {
 			score += 30 - timer;
 			$('.chem-input').val('');
+			progressbarSuccess();
 			clearInterval(interval);
 			setTimer();
 			console.log('success')
@@ -28,6 +29,7 @@ $('.games.alkenes').ready(function(){
 			console.log('input: ' + input + ' molecule: ' + moleculeNames )
 			failed.push(moleculeNames[0]);
 			$('.chem-input').val('');
+			progressbarFailure();
 			clearInterval(interval);
 			setTimer();
 			addStrike();
@@ -79,10 +81,8 @@ $('.games.alkenes').ready(function(){
 		if (failed.length > 0) { 
 			for (var i = 0; i < failed.length; i++) {
 				var failedName = failed[i];
-				console.log('failedName: ' + failedName)
 				if ($('.' + failedName).length > 0) {
 					var badge = $('.' + failedName + ' > span');
-					console.log(badge)
 					var badgeNumber = parseInt(badge.text()) + 1;
 					badge.text(badgeNumber);
 				}
@@ -94,5 +94,17 @@ $('.games.alkenes').ready(function(){
 		if ($('.modal-fail-list').css('display') === 'none') {
 			$('.modal-fail-list').toggle();
 		}
+	}
+
+	function progressbarSuccess(){
+		var progressbar = $('.progress-bar');
+		progressbar.addClass('progress-bar-success').removeClass('progress-bar-warning');
+		setTimeout(function(){progressbar.removeClass('progress-bar-success').addClass('progress-bar-warning')}, 1000);
+	}
+	
+	function progressbarFailure(){
+		var progressbar = $('.progress-bar');
+		progressbar.addClass('progress-bar-danger').removeClass('progress-bar-warning');
+		setTimeout(function(){progressbar.removeClass('progress-bar-danger').addClass('progress-bar-warning')}, 1000);
 	}
 });

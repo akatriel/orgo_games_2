@@ -81,10 +81,8 @@ $('.games.alkanes').ready(function(){
 		if (failed.length > 0) { 
 			for (var i = 0; i < failed.length; i++) {
 				var failedName = failed[i];
-				console.log('failedName: ' + failedName)
 				if ($('.' + failedName).length > 0) {
 					var badge = $('.' + failedName + ' > span');
-					console.log(badge)
 					var badgeNumber = parseInt(badge.text()) + 1;
 					badge.text(badgeNumber);
 				}

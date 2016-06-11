@@ -1,12 +1,32 @@
+<div id="modal" class="modal fade" tabindex="-1" role="dialog" data-backdrop="static" data-keyboard="false">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h4 class="modal-title">Newman Projections</h4>
+			</div>
+			<div class="modal-body">
+				<ul>
+					<li>Rotate the back carbon into the most stable conformation.</li>
+				</ul>
+			</div>
+			<div class="modal-footer">
+				<button type="button" id="start-button" class="btn btn-success btn-lg btn-block">Start</button>
+				<button type="button" id="reload" class="btn btn-success btn-lg btn-block">Play Again?</button>
+			</div>
+		</div><!-- /.modal-content -->
+	</div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+
 <h1> Newman Projections</h1>
-<canvas id="canvas"></canvas>
-<div class="projections">
-	<%= image_tag 'newman/newman_2_back.png', id: 'back'%>
-	<%= image_tag 'newman/newman_2_front.png', id:'front'%>
+<h2 id="stable">Stable!!!</h2>
+<div class="well newman-well">
+	<div class="projections">
+		<%= render 'newmans' %>
+	</div>
 </div>
 <div class="molecule">
 	<!-- <img id="molec" src="images/newman/newman_projections/6.11.png"> -->
 </div>
-<p id= "stable">Stable!!!</p>
-<a href="/newman"><button>Next Projection</button></a>
+
 	
